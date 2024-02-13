@@ -55,8 +55,8 @@ public class P18_1_Odd_Even_Linked_List {
         ListNode oddHead = head;
         ListNode evenHead = head.next;
 
-        ListNode oddNode = linkNodes(oddHead);
-        ListNode evenNode = linkNodes(evenHead);
+        ListNode oddNode = wrongLinkNodes(oddHead);
+        ListNode evenNode = wrongLinkNodes(evenHead);
 
         while (oddNode.next != null) {
             oddNode = oddNode.next;
