@@ -1,8 +1,6 @@
-package org.javaalgorithminterview.ch12;
+package org.javaalgorithminterview.ch12_graph;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class P42_1_Travel_Route_43164Test {
 

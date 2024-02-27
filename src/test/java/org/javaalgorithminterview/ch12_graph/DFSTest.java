@@ -1,4 +1,4 @@
-package org.javaalgorithminterview.ch12;
+package org.javaalgorithminterview.ch12_graph;
 
 import org.junit.jupiter.api.Test;
 

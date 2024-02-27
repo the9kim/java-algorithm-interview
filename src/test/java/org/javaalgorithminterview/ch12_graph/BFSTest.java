@@ -1,13 +1,10 @@
-package org.javaalgorithminterview.ch12;
+package org.javaalgorithminterview.ch12_graph;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class BFSTest {
 

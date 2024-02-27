@@ -1,4 +1,4 @@
-package org.javaalgorithminterview.ch12;
+package org.javaalgorithminterview.ch12_graph;
 
 import org.junit.jupiter.api.Test;
 
@@ -8,8 +8,6 @@ import java.util.Deque;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class P36_1_Letter_Combinations_of_a_Phone_NumberTest {
 

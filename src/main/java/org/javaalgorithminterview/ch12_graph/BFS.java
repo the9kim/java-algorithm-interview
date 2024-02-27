@@ -1,9 +1,8 @@
-package org.javaalgorithminterview.ch12;
+package org.javaalgorithminterview.ch12_graph;
 
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.HashMap;
 import java.util.Queue;
 import java.util.LinkedList;
 

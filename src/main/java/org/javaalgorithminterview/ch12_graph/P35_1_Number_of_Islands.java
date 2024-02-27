@@ -1,4 +1,4 @@
-package org.javaalgorithminterview.ch12;
+package org.javaalgorithminterview.ch12_graph;
 
 public class P35_1_Number_of_Islands {
 

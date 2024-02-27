@@ -1,4 +1,4 @@
-package org.javaalgorithminterview.ch12;
+package org.javaalgorithminterview.ch12_graph;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
