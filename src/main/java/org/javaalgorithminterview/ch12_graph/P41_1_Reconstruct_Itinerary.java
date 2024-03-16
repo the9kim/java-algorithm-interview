@@ -31,11 +31,14 @@ public class P41_1_Reconstruct_Itinerary {
         Deque<String> stack = new ArrayDeque<>();
         stack.push("JFK");
 
+        // Continue searching until all paths are found.
         while (!stack.isEmpty()) {
+            // Continue searching until one disconnected path has been found
             while (graph.containsKey(stack.peek()) && !graph.get(stack.peek()).isEmpty()) {
                 String top = graph.get(stack.peek()).poll();
                 stack.push(top);
             }
+            // Add the disconnected path to the end of the final path
             route.add(0, stack.pop());
         }
 

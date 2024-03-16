@@ -47,6 +47,11 @@ public class P45_4_Cheapest_Flights_Within_K_Stops {
                 continue;
             }
 
+//            Why it is not working?
+//            if (visited.containsKey(node[0]) && node[2] > visited.get(node[0])) {
+//                continue;
+//            }
+
             visited.put(node[0], node[2]);
 
             List<int[]> neighbors = graph.getOrDefault(node[0], new ArrayList<>());

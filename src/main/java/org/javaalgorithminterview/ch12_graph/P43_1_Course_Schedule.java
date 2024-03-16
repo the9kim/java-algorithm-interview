@@ -14,7 +14,7 @@ import java.util.Map;
 public class P43_1_Course_Schedule {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
 
-        // 1
+        // 1. Create a graph
         Map<Integer, List<Integer>> graph = new HashMap<>();
 
         for (int[] prerequisite : prerequisites) {
@@ -22,10 +22,12 @@ public class P43_1_Course_Schedule {
             graph.get(prerequisite[0]).add(prerequisite[1]);
         }
 
-
+        // 2. Search prerequisites of course in graph using iterative DFS
         for (int i = 0; i < numCourses; i++) {
             Deque<Integer> stack = new ArrayDeque<>();
             stack.push(i);
+            // Continue searching until one disconnected path has been found
+            // Because there is not a starting point, I can't remove neighbor nodes
             while (graph.containsKey(stack.peek()) && !graph.get(stack.peek()).isEmpty()) {
                 Integer prerequisite = graph.get(stack.peek()).remove(0);
                 if (stack.contains(prerequisite)) {
