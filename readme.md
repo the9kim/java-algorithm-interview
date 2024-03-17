@@ -24,7 +24,7 @@
 - [문제18 - 홀짝 연결 리스트](https://leetcode.com/problems/odd-even-linked-list/description/)
 - [문제19 - 역순 연결 리스트](https://leetcode.com/problems/reverse-linked-list-ii/)
 
-## 스택, 큐
+## 4. 스택, 큐
 - [문제20 - 유효한 괄호](https://leetcode.com/problems/valid-parentheses/description/)
 - [문제21 - 중복 문자 제거](https://leetcode.com/problems/remove-duplicate-letters/description/)
 - [문제22 - 일일 온도](https://leetcode.com/problems/daily-temperatures/description/)
@@ -32,19 +32,19 @@
 - [문제24 - 스택을 이용한 큐 구현](https://leetcode.com/problems/implement-queue-using-stacks/description/)
 - [문제25 - 원형 큐 디자인](https://leetcode.com/problems/design-circular-queue/)
 
-## 데크, 우선 순위 큐
+## 5. 데크, 우선 순위 큐
 - [문제26 - 원형 데크 디자인](https://leetcode.com/problems/design-circular-deque/description/)
 - [문제27 - k개 정렬 리스트 병합](https://leetcode.com/problems/merge-k-sorted-lists/description/)
 - [문제28 - 원점에서 가장 가까운 k개의 점](https://leetcode.com/problems/k-closest-points-to-origin/description/)
 - [문제29 - 더 맵게](https://school.programmers.co.kr/learn/courses/30/lessons/42626)
 
-## 해시 테이블
+## 6. 해시 테이블
 - [문제30 - 해시맵 디자인](https://leetcode.com/problems/design-hashmap/description/)
 - [문제31 - 보석과 돌](https://leetcode.com/problems/jewels-and-stones/description/)
 - [문제32 - 중복 문자 없는 가장 긴 부분 문자열](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
 - [문제33 - 상위 k 빈도 엘리먼트](https://leetcode.com/problems/top-k-frequent-elements/)
 
-## 그래프
+## 7. 그래프
 - [문제35 - 섬의 개수](https://leetcode.com/problems/number-of-islands/)
 - [문제36 - 전화번호 문자 조합](https://leetcode.com/problems/letter-combinations-of-a-phone-number/)
 - [문제37 - 순열](https://leetcode.com/problems/permutations/)
@@ -55,12 +55,12 @@
 - [문제42 - 여행 경로](https://school.programmers.co.kr/learn/courses/30/lessons/43164?language=java)
 - [문제43 - 코스 일정](https://leetcode.com/problems/course-schedule/description/)
 
-## 최단 경로
+## 8. 최단 경로
 - [문제44 - 네트워크 딜레이 타임](https://leetcode.com/problems/network-delay-time/description/)
 - [문제45 - k 경유지 내 가장 저렴한 항공권](https://leetcode.com/problems/cheapest-flights-within-k-stops/description/)
 - [문제46 - 게임 맵 최단 거리](https://school.programmers.co.kr/learn/courses/30/lessons/1844?language=java)
 
-## 트리
+## 9. 트리
 - [문제47 - 이진 트리의 최대 깊이](https://leetcode.com/problems/maximum-depth-of-binary-tree/description/)
 - [문제48 - 이진 트리의 직경](https://leetcode.com/problems/diameter-of-binary-tree/description/)
 
