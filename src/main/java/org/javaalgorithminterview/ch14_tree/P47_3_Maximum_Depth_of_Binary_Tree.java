@@ -42,6 +42,7 @@ public class P47_3_Maximum_Depth_of_Binary_Tree {
         queue.add(root);
 
         while (!queue.isEmpty()) {
+            // I have to pick up qSize as a variable
             int qSize = queue.size();
             depth++;
 
