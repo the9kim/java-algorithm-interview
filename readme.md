@@ -65,4 +65,6 @@
 - [문제48 - 이진 트리의 직경](https://leetcode.com/problems/diameter-of-binary-tree/description/)
 - [문제49 - 가장 긴 동일 값의 경로](https://leetcode.com/problems/longest-univalue-path/description/)
 - [문제50 - 이진 트리 반전](https://leetcode.com/problems/invert-binary-tree/description/)
+- [문제51 - 두 이진트리 병합](https://leetcode.com/problems/merge-two-binary-trees/description/)
+- [문제53 - 균형 이진 트리](https://leetcode.com/problems/balanced-binary-tree/description/)
 
