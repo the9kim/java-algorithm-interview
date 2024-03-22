@@ -69,4 +69,9 @@
 - [문제52 - 이진 트리 직렬와 & 역직렬화](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/description/)
 - [문제53 - 균형 이진 트리](https://leetcode.com/problems/balanced-binary-tree/description/)
 - [문제54 - 최소 높이 트리](https://leetcode.com/problems/minimum-height-trees/description/)
+- [카카오19 - 5.길 찾기 게임](https://school.programmers.co.kr/learn/courses/30/lessons/42892)
+- [카카오21 - 7.매출 하락 최소화]https://school.programmers.co.kr/learn/courses/30/lessons/72416
+- [카카오22 - 3 양궁대회](https://school.programmers.co.kr/learn/courses/30/lessons/92342)
+- [카카오22 - 4.양과 늑대](https://school.programmers.co.kr/learn/courses/30/lessons/92343)
+- [카카오23 - 4.표현 가능한 이진트리](https://school.programmers.co.kr/learn/courses/30/lessons/150367)
 
