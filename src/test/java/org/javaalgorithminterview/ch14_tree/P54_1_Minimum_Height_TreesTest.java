@@ -3,16 +3,11 @@ package org.javaalgorithminterview.ch14_tree;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.*;
-
-import static org.javaalgorithminterview.ch14_tree.P54_1_Minimum_Height_Trees.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class P54_1_Minimum_Height_TreesTest {
 
@@ -87,18 +82,18 @@ class P54_1_Minimum_Height_TreesTest {
                         6, List.of(5));
         Integer val = 3;
 
-        TreeNode expected = new TreeNode(3, List.of(
-                new TreeNode(0),
-                new TreeNode(1),
-                new TreeNode(2),
-                new TreeNode(4),
-                new TreeNode(5, List.of(new TreeNode(6)))
+        P54_1_Minimum_Height_Trees.TreeNode expected = new P54_1_Minimum_Height_Trees.TreeNode(3, List.of(
+                new P54_1_Minimum_Height_Trees.TreeNode(0),
+                new P54_1_Minimum_Height_Trees.TreeNode(1),
+                new P54_1_Minimum_Height_Trees.TreeNode(2),
+                new P54_1_Minimum_Height_Trees.TreeNode(4),
+                new P54_1_Minimum_Height_Trees.TreeNode(5, List.of(new P54_1_Minimum_Height_Trees.TreeNode(6)))
         ));
 
         // when
         P54_1_Minimum_Height_Trees p54 = new P54_1_Minimum_Height_Trees();
 
-        TreeNode root = p54.createTree(edgeMap, val, null);
+        P54_1_Minimum_Height_Trees.TreeNode root = p54.createTree(edgeMap, val, null);
 
 
         // then
@@ -106,7 +101,7 @@ class P54_1_Minimum_Height_TreesTest {
 
     }
 
-    public void assertTreeNodeEquality(TreeNode actual, TreeNode expected) {
+    public void assertTreeNodeEquality(P54_1_Minimum_Height_Trees.TreeNode actual, P54_1_Minimum_Height_Trees.TreeNode expected) {
         assertThat(actual.val).isEqualTo(expected.val);
         System.out.println(actual.val);
         assertThat(actual.children.size()).isEqualTo(expected.children.size());
@@ -119,12 +114,12 @@ class P54_1_Minimum_Height_TreesTest {
     void calculateHeight() {
 
         // given
-        TreeNode root = new TreeNode(3, List.of(
-                new TreeNode(0),
-                new TreeNode(1),
-                new TreeNode(2),
-                new TreeNode(4),
-                new TreeNode(5, List.of(new TreeNode(6)))
+        P54_1_Minimum_Height_Trees.TreeNode root = new P54_1_Minimum_Height_Trees.TreeNode(3, List.of(
+                new P54_1_Minimum_Height_Trees.TreeNode(0),
+                new P54_1_Minimum_Height_Trees.TreeNode(1),
+                new P54_1_Minimum_Height_Trees.TreeNode(2),
+                new P54_1_Minimum_Height_Trees.TreeNode(4),
+                new P54_1_Minimum_Height_Trees.TreeNode(5, List.of(new P54_1_Minimum_Height_Trees.TreeNode(6)))
         ));
 
         int expected = 2;
