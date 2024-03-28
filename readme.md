@@ -69,9 +69,15 @@
 - [문제52 - 이진 트리 직렬와 & 역직렬화](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/description/)
 - [문제53 - 균형 이진 트리](https://leetcode.com/problems/balanced-binary-tree/description/)
 - [문제54 - 최소 높이 트리](https://leetcode.com/problems/minimum-height-trees/description/)
+- [문제55 - 정렬된 배열의 이진 탐색 트리 변환](https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/description/)
+- [문제56 - 이진 탐색 트리(BST)를 더 큰 수 합계 트리로](https://leetcode.com/problems/binary-search-tree-to-greater-sum-tree/description/)
+- [문제57 - 이진 탐색 트리(BST) 합의 범위] (https://leetcode.com/problems/range-sum-of-bst/)
+- [문제58 - 이진 탐색 트리(BST) 노드 간 최솟값](https://leetcode.com/problems/minimum-distance-between-bst-nodes/description/)
+- [문제59 - 전위, 중위 순회 결과로 이진 트리 구축](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/description/)
 - [카카오19 - 5.길 찾기 게임](https://school.programmers.co.kr/learn/courses/30/lessons/42892)
 - [카카오21 - 7.매출 하락 최소화]https://school.programmers.co.kr/learn/courses/30/lessons/72416
 - [카카오22 - 3 양궁대회](https://school.programmers.co.kr/learn/courses/30/lessons/92342)
 - [카카오22 - 4.양과 늑대](https://school.programmers.co.kr/learn/courses/30/lessons/92343)
 - [카카오23 - 4.표현 가능한 이진트리](https://school.programmers.co.kr/learn/courses/30/lessons/150367)
+- 
 
