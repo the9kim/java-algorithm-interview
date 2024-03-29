@@ -58,7 +58,7 @@ public class P58_2_Minimum_Distance_Between_BST_Nodes {
     int prev = Integer.MIN_VALUE + 100000;
 
     /**
-     * The book solution Utilizing iterative in-order traversal.
+     * The book solution Utilizing recursive in-order traversal.
      */
     public int minDiffInBST(TreeNode root) {
 
