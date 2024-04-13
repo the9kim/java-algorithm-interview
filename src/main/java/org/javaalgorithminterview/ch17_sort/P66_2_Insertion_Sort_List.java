@@ -1,6 +1,6 @@
 package org.javaalgorithminterview.ch17_sort;
 
-public class P69_3_Insertion_Sort_List {
+public class P66_2_Insertion_Sort_List {
 
     public static class ListNode {
         int val;
@@ -22,7 +22,7 @@ public class P69_3_Insertion_Sort_List {
     /**
      * The book solution
      *
-     * It enhances the condition for initializing the pointer of the sorted list.
+     * This method identifies the location immediately before where the target node is inserted within the sorted list
      */
     public ListNode insertionSortList(ListNode head) {
         ListNode parent = new ListNode();
@@ -38,10 +38,7 @@ public class P69_3_Insertion_Sort_List {
             p.next = head;
             head.next = pNext;
             head = headNext;
-
-            if (head != null && p.val < head.val) {
-                p = parent;
-            }
+            p = parent;
         }
         return parent.next;
     }

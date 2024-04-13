@@ -1,6 +1,6 @@
 package org.javaalgorithminterview.ch17_sort;
 
-public class P69_1_Insertion_Sort_List {
+public class P66_1_Insertion_Sort_List {
 
     public static class ListNode {
         int val;

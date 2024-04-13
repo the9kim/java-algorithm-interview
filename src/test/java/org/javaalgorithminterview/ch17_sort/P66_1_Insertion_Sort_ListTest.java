@@ -1,13 +1,11 @@
 package org.javaalgorithminterview.ch17_sort;
 
 import org.assertj.core.api.Assertions;
-import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 
-import static org.javaalgorithminterview.ch17_sort.P69_1_Insertion_Sort_List.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.javaalgorithminterview.ch17_sort.P66_1_Insertion_Sort_List.*;
 
-class P69_1_Insertion_Sort_ListTest {
+class P66_1_Insertion_Sort_ListTest {
 
     @Test
     void insertNode() {
@@ -26,7 +24,7 @@ class P69_1_Insertion_Sort_ListTest {
         ListNode expectedNode1 = new ListNode(1, expectedNode2);
 
         // when
-        P69_1_Insertion_Sort_List p69 = new P69_1_Insertion_Sort_List();
+        P66_1_Insertion_Sort_List p69 = new P66_1_Insertion_Sort_List();
         ListNode answer = p69.insertNode(node1, insertionNode);
 
         // then
@@ -55,7 +53,7 @@ class P69_1_Insertion_Sort_ListTest {
         ListNode expectedNode1 = new ListNode(1, expectedNode2);
 
         // when
-        P69_1_Insertion_Sort_List p69 = new P69_1_Insertion_Sort_List();
+        P66_1_Insertion_Sort_List p69 = new P66_1_Insertion_Sort_List();
         ListNode answer = p69.insertionSortList(node1);
 
         // then
