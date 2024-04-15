@@ -21,6 +21,8 @@ public class P70_1_Binary_Search {
     }
 
     /**
+     * A recursive Solution
+     *
      * 1. Find a middle element of an input array
      * 2. Divide the search interval in half
      * 3. Compare the target value with the middle element of the array
