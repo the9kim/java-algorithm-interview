@@ -1,11 +1,10 @@
-package org.javaalgorithminterview.ch18_binary_search;
+package org.javaalgorithminterview.ch19_bit_manipulation;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class P76_1_Sum_of_IntegerTest {
+class P78_1_Sum_of_TwoIntegersTest {
 
     @Test
     void changeIntToBitwiseString() {

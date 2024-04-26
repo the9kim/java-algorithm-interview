@@ -1,10 +1,10 @@
-package org.javaalgorithminterview.ch18_binary_search;
+package org.javaalgorithminterview.ch19_bit_manipulation;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class P76_1_Sum_of_Integer {
+public class P78_1_Sum_of_Two_Integers {
 
 
     /**
