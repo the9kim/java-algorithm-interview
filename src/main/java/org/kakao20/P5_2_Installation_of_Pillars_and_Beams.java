@@ -72,7 +72,6 @@ public class P5_2_Installation_of_Pillars_and_Beams {
             }
         }
         return answer;
-
     }
 
     /**
