@@ -39,7 +39,7 @@ public class P66_3_Insertion_Sort_List {
             head.next = pNext;
             head = headNext;
 
-            if (head != null && p.val < head.val) {
+            if (head != null && p.val > head.val) {
                 p = parent;
             }
         }
