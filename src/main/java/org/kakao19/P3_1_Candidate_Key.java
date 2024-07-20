@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.Set;
 
 public class P3_1_Candidate_Key {
+
+    // Test-failed
     public int solution(String[][] relation) {
 
         // 1. Calculate subsets of each row
