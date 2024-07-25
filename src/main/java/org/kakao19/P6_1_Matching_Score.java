@@ -21,17 +21,13 @@ public class P6_1_Matching_Score {
      */
     public int solution(String word, String[] pages) {
         // 1.
-        Matcher matcher;
         for (int i = 0; i < pages.length; i++) {
             word = word.toLowerCase();
             String html = pages[i].toLowerCase();
 
             // url
-            int headStart = html.indexOf("<head>");
-            int headEnd = html.indexOf("</head>", headStart);
-            String head = html.substring(headStart + 6, headEnd);
             String urlRegex = "<meta property=\"og:url\" content=\"(.*?)\"";
-            matcher = getMatcher(urlRegex, head);
+            Matcher matcher = Pattern.compile(urlRegex).matcher(html);
             if (matcher.find()) {
                 String url = matcher.group(1);
                 urlMap.put(i, url);
@@ -40,20 +36,20 @@ public class P6_1_Matching_Score {
 
             // link
             String linkRegex = "<a href=\"(.*?)\"";
-            matcher = getMatcher(linkRegex, html);
+            matcher = Pattern.compile(linkRegex).matcher(html);
+            int linkCount = 0;
             while (matcher.find()) {
                 String link = matcher.group(1);
-                exLinkMap.put(i, exLinkMap.getOrDefault(i, 0) + 1);
-
+                linkCount++;
                 linkedPageMap.putIfAbsent(link, new ArrayList<>());
                 linkedPageMap.get(link).add(i);
             }
+            exLinkMap.put(i, linkCount);
 
             // word
-
             // look-behind and look-ahead pattern
             String wordRegex = "(?<![a-zA-Z])" + Pattern.quote(word) + "(?![a-zA-Z])";
-            matcher = getMatcher(wordRegex, html);
+            matcher = Pattern.compile(wordRegex).matcher(html);
 
             int count = 0;
             while (matcher.find()) {
@@ -85,7 +81,4 @@ public class P6_1_Matching_Score {
 
     }
 
-    public Matcher getMatcher(String regex, String html) {
-        return Pattern.compile(regex).matcher(html);
-    }
 }
