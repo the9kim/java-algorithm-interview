@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-public class P83_Longest_Repeating_Character_Replacement {
+public class P83_2_Longest_Repeating_Character_Replacement {
     public int characterReplacement(String s, int k) {
         int left = 0;
         Map<Character, Integer> counter = new HashMap<>();
