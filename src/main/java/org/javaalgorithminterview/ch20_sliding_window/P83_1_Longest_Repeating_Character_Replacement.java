@@ -5,29 +5,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class P83_1_Longest_Repeating_Character_Replacement {
-    public String minWindow(String s, String t) {
+    public int characterReplacement(String s, int k) {
+        int left = 0;
+        Map<Character, Integer> counter = new HashMap<>();
 
-        for (int windowSize = t.length(); windowSize < s.length() + 1; windowSize++) {
-            for (int left = 0; left < s.length() - windowSize + 1; left++) {
-                String subS = s.substring(left, left + windowSize);
-                if (contains(subS, t)) {
-                    return subS;
-                }
+        for (int right = 1; right <= s.length(); right++) {
+            counter.put(s.charAt(right - 1), counter.getOrDefault(s.charAt(right - 1), 0) + 1);
+
+            int maxCount = Collections.max(counter.values());
+
+            if (right - left - maxCount > k) {
+                counter.put(s.charAt(left), counter.get(s.charAt(left)) - 1);
+                left++;
             }
         }
-        return "";
-    }
-
-    public boolean contains(String s, String t) {
-        StringBuilder sb = new StringBuilder(s);
-
-        for (char c : t.toCharArray()) {
-            if (sb.indexOf(String.valueOf(c)) != -1) {
-                sb.deleteCharAt(sb.indexOf(String.valueOf(c)));
-            } else {
-                return false;
-            }
-        }
-        return true;
+        return s.length() - left;
     }
 }

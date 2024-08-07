@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class P83_2_Longest_Repeating_Character_ReplacementTest {
+class P83_1_Longest_Repeating_Character_ReplacementTest {
 
     @Test
     void characterReplacement() {
@@ -14,7 +14,7 @@ class P83_2_Longest_Repeating_Character_ReplacementTest {
         int expected = 5;
 
         // when
-        P83_2_Longest_Repeating_Character_Replacement p83 = new P83_2_Longest_Repeating_Character_Replacement();
+        P83_1_Longest_Repeating_Character_Replacement p83 = new P83_1_Longest_Repeating_Character_Replacement();
         int answer = p83.characterReplacement(s, k);
 
         // then
@@ -29,7 +29,7 @@ class P83_2_Longest_Repeating_Character_ReplacementTest {
         int expected = 4;
 
         // when
-        P83_2_Longest_Repeating_Character_Replacement p83 = new P83_2_Longest_Repeating_Character_Replacement();
+        P83_1_Longest_Repeating_Character_Replacement p83 = new P83_1_Longest_Repeating_Character_Replacement();
         int answer = p83.characterReplacement(s, k);
 
         // then
@@ -44,7 +44,7 @@ class P83_2_Longest_Repeating_Character_ReplacementTest {
         int expected = 2;
 
         // when
-        P83_2_Longest_Repeating_Character_Replacement p83 = new P83_2_Longest_Repeating_Character_Replacement();
+        P83_1_Longest_Repeating_Character_Replacement p83 = new P83_1_Longest_Repeating_Character_Replacement();
         int answer = p83.characterReplacement(s, k);
 
         // then
@@ -59,7 +59,7 @@ class P83_2_Longest_Repeating_Character_ReplacementTest {
         int expected = 4;
 
         // when
-        P83_2_Longest_Repeating_Character_Replacement p83 = new P83_2_Longest_Repeating_Character_Replacement();
+        P83_1_Longest_Repeating_Character_Replacement p83 = new P83_1_Longest_Repeating_Character_Replacement();
         int answer = p83.characterReplacement(s, k);
 
         // then

@@ -3,9 +3,7 @@ package org.javaalgorithminterview.ch20_sliding_window;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class P82_1_Minimum_Window_SubstringTest {
+class P82_2_Minimum_Window_SubstringTest {
 
     @Test
     void minWindow() {
@@ -16,7 +14,7 @@ class P82_1_Minimum_Window_SubstringTest {
         String expected = "BANC";
 
         // when
-        P82_1_Minimum_Window_Substring p82 = new P82_1_Minimum_Window_Substring();
+        P82_2_Minimum_Window_Substring p82 = new P82_2_Minimum_Window_Substring();
         String answer = p82.minWindow(s, t);
 
         // then
@@ -32,7 +30,7 @@ class P82_1_Minimum_Window_SubstringTest {
         String expected = "baca";
 
         // when
-        P82_1_Minimum_Window_Substring p82 = new P82_1_Minimum_Window_Substring();
+        P82_2_Minimum_Window_Substring p82 = new P82_2_Minimum_Window_Substring();
         String answer = p82.minWindow(s, t);
 
         // then
