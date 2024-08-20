@@ -1,9 +1,11 @@
 package org.kakao18;
 
+import java.util.Arrays;
+
 public class P7_1_Thanksgiving_Traffic {
+
     static final int MAX = 24 * 60 * 60 * 1000;
     int[] traffic = new int[MAX];
-
 
     /**
      * 1. Calculate accumulated request counts using array
@@ -23,29 +25,14 @@ public class P7_1_Thanksgiving_Traffic {
         }
 
         // 2.
-        int maxTraffic = 0;
-        for (int t : traffic) {
-            if (t > maxTraffic) {
-                maxTraffic = t;
-            }
-        }
-        return maxTraffic;
+        return Arrays.stream(traffic).max().getAsInt();
     }
 
     public int convertToStart(String line) {
         int end = convertToEnd(line);
-
-        String psTemp = line.substring(24, line.length() - 1);
-        String[] psArr = psTemp.split("\\.");
-        int ps;
-        if (psArr.length == 1) {
-            ps = Integer.valueOf(psArr[0]) * 1000;
-        } else {
-            ps = Integer.valueOf(psArr[0]) * 1000 + Integer.valueOf(psArr[1]);
-        }
+        int ps = (int) (Double.parseDouble(line.substring(24, line.length() - 1)) * 1000);
 
         return end - ps + 1;
-
     }
 
     public int convertToEnd(String line) {
@@ -56,4 +43,5 @@ public class P7_1_Thanksgiving_Traffic {
 
         return h * 60 * 60 * 1000 + m * 60 * 1000 + s * 1000 + ms;
     }
+
 }
