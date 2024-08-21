@@ -1,11 +1,13 @@
 package org.kakao19;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.IntStream;
 
 public class P6_1_Matching_Score {
 
@@ -17,67 +19,66 @@ public class P6_1_Matching_Score {
 
     /**
      * 1. Extract information from html using Regex
-     * 2. Calculate the matching scores and identify the highest one
+     * 2. Calculate the matching scores
+     * 3. identify the highest one
      */
     public int solution(String word, String[] pages) {
-        // 1.
-        for (int i = 0; i < pages.length; i++) {
-            word = word.toLowerCase();
-            String html = pages[i].toLowerCase();
+        int n = pages.length;
+
+        String[] urls = new String[n];
+        int[] basicScores = new int[n];
+        Map<Integer, List<String>> links = new HashMap<>();
+        double[] matchingScores = new double[n];
+
+        // 1. Parse the html pages
+        word = word.toLowerCase();
+        Pattern urlPattern = Pattern.compile("<meta property=\"og:url\" content=\"(.*?)\"/>");
+        Pattern linkPattern = Pattern.compile("<a href=\"(.*?)\">");
+        Pattern wordPattern = Pattern.compile("(?<![a-zA-Z])" + Pattern.quote(word) + "(?![a-zA-Z])");
+
+        for (int i = 0; i < n; i++) {
+            String page = pages[i].toLowerCase();
 
             // url
-            String urlRegex = "<meta property=\"og:url\" content=\"(.*?)\"";
-            Matcher matcher = Pattern.compile(urlRegex).matcher(html);
+            Matcher matcher = urlPattern.matcher(page);
             if (matcher.find()) {
-                String url = matcher.group(1);
-                urlMap.put(i, url);
-                linkedPageMap.putIfAbsent(url, new ArrayList<>());
+                urls[i] = matcher.group(1);
             }
 
-            // link
-            String linkRegex = "<a href=\"(.*?)\"";
-            matcher = Pattern.compile(linkRegex).matcher(html);
-            int linkCount = 0;
+            // links
+            matcher = linkPattern.matcher(page);
+            links.putIfAbsent(i, new ArrayList<>());
             while (matcher.find()) {
-                String link = matcher.group(1);
-                linkCount++;
-                linkedPageMap.putIfAbsent(link, new ArrayList<>());
-                linkedPageMap.get(link).add(i);
+                links.get(i).add(matcher.group(1));
             }
-            exLinkMap.put(i, linkCount);
 
-            // word
-            // look-behind and look-ahead pattern
-            String wordRegex = "(?<![a-zA-Z])" + Pattern.quote(word) + "(?![a-zA-Z])";
-            matcher = Pattern.compile(wordRegex).matcher(html);
-
-            int count = 0;
-            while (matcher.find()) {
-                count++;
-            }
-            basicScoreMap.put(i, count);
+            // basic score
+            matcher = wordPattern.matcher(page);
+            basicScores[i] = (int) matcher.results().count();
         }
 
-        // 2.
-        int topScoreIdx = -1;
-        double maxScore = -1;
-        for (int i = 0; i < pages.length; i++) {
-            int basicScore = basicScoreMap.get(i);
+        // 2. Calculate the Matching score
+        for (int i = 0; i < n; i++) {
+            String url = urls[i];
+            double score = basicScores[i];
 
-            double linkScore = 0;
-            String url = urlMap.get(i);
-            List<Integer> linkedIdx = linkedPageMap.get(url);
-            for (int pageIdx : linkedIdx) {
-                linkScore += (double) basicScoreMap.get(pageIdx) / exLinkMap.get(pageIdx);
+            for (int j = 0; j < n; j++) {
+                if (i == j) {
+                    continue;
+                }
+                List<String> linkList = links.get(j);
+                if (linkList.contains(url)) {
+                    score += (double) basicScores[j] / linkList.size();
+                }
             }
-
-            double totalScore = basicScore + linkScore;
-            if (totalScore > maxScore) {
-                maxScore = totalScore;
-                topScoreIdx = i;
-            }
+            matchingScores[i] = score;
         }
-        return topScoreIdx;
+
+        // 3. Find the index with the maximum matching score
+        return IntStream.range(0, n)
+                .boxed()
+                .max(Comparator.comparingDouble(i -> matchingScores[i]))
+                .orElse(0);
 
     }
 
