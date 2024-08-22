@@ -2,83 +2,96 @@ package org.kakao19;
 
 public class P7_1_Block_Game {
 
+    int[][] board;
+    int n;
+
     /**
      * 1. Slide Two Types of rectangular windows
      * 2. Check if these window contain a block and the block is removable
      * 3. Count the number of removable blocks
      */
-
-    int[][] board;
-    int size;
-
     public int solution(int[][] board) {
         this.board = board;
-        size = board.length;
-        int answer = 0;
+        this.n = board.length;
 
-        int count;
-        // 1.
+        int totalRemovals = 0;
+        boolean hasRemovedBlocks;
+
         do {
-            count = 0;
-            for (int r = 0; r < size; r++) {
-                for (int c = 0; c < size; c++) {
-                    if (r < size - 1 && c < size - 2 && canRemove(r, c, 3, 2)) {
-                        count++;
-                        remove(r, c, 3, 2);
-                    }
-                    if (r < size - 2 && c < size - 1 && canRemove(r, c, 2, 3)) {
-                        count++;
-                        remove(r, c, 2, 3);
+            hasRemovedBlocks = false;
+
+            // 1
+            for (int r = 0; r < n - 2; r++) {
+                for (int c = 0; c < n - 1; c++) {
+
+                    // 2.
+                    if (canRemove(r, c, 3, 2)) {
+                        removeBlock(r, c, 3, 2);
+                        hasRemovedBlocks = true;
+                        totalRemovals++;
                     }
                 }
             }
-            answer += count;
 
-        } while (count != 0);
+            for (int r = 0; r < n - 1; r++) {
+                for (int c = 0; c < n - 2; c++) {
+                    if (canRemove(r, c, 2, 3)) {
+                        removeBlock(r, c, 2, 3);
+                        hasRemovedBlocks = true;
+                        totalRemovals++;
+                    }
+                }
+            }
 
-        return answer;
+        } while (hasRemovedBlocks);
+
+        // 3
+        return totalRemovals;
     }
 
-    public boolean canRemove(int row, int col, int width, int height) {
-        int emptyNum = 0;
-        int lastValue = -1;
+    public boolean canRemove(int r, int c, int h, int w) {
+        int blockValue = -1;
+        int emptyCounts = 0;
 
-        for (int r = row; r < row + height; r++) {
-            for (int c = col; c < col + width; c++) {
-                if (board[r][c] == 0) {
-                    if (emptyNum >= 2) {
+        for (int row = r; row < r + h; row++) {
+            for (int col = c; col < c + w; col++) {
+                if (board[row][col] == 0) {
+                    if (emptyCounts >= 2 || !isEmptyAbove(row, col)) {
                         return false;
                     }
-                    if (!isEmptyAbove(r, c)) {
-                        return false;
-                    }
-                    emptyNum++;
+                    emptyCounts++;
+
                 } else {
-                    if (lastValue != -1 && board[r][c] != lastValue) {
+                    if (blockValue != -1 && blockValue != board[row][col]) {
                         return false;
                     }
-                    lastValue = board[r][c];
+                    blockValue = board[row][col];
                 }
             }
         }
-        return true;
+        return blockValue != -1;
     }
 
-    public boolean isEmptyAbove(int row, int col) {
-        while (row >= 0) {
-            if (board[row][col] != 0) {
+    public boolean isEmptyAbove(int r, int c) {
+        while (r >= 0) {
+            if (board[r][c] != 0) {
                 return false;
             }
-            row--;
+            r--;
         }
         return true;
     }
 
-    public void remove(int row, int col, int w, int h) {
-        for (int r = row; r < row + h; r++) {
-            for (int c = col; c < col + w; c++) {
-                board[r][c] = 0;
+    public void removeBlock(int r, int c, int h, int w) {
+        if (r + h > n || c + w > n) {
+            return;
+        }
+
+        for (int row = r; row < r + h; row++) {
+            for (int col = c; col < c + w; col++) {
+                board[row][col] = 0;
             }
         }
     }
+
 }
