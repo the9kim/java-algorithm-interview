@@ -3,8 +3,6 @@ package org.kakao23;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class P6_2_Instruction_for_Escaping_MazeTest {
 
     @Test
@@ -31,14 +29,14 @@ class P6_2_Instruction_for_Escaping_MazeTest {
     @Test
     void solution2() {
         // given
-        int n = 3;
-        int m = 3;
+        int n = 2;
+        int m = 2;
         int x = 1;
-        int y = 2;
-        int r = 3;
-        int c = 3;
-        int k = 4;
-        String expected = "impossible";
+        int y = 1;
+        int r = 2;
+        int c = 2;
+        int k = 2;
+        String expected = "dr";
 
         // when
         P6_2_Instruction_for_Escaping_Maze p6 = new P6_2_Instruction_for_Escaping_Maze();
