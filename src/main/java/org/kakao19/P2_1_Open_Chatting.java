@@ -7,36 +7,45 @@ import java.util.Map;
 
 public class P2_1_Open_Chatting {
     /**
-     * 1. Create a nickname map
-     * 2. make an answer statement using printf()
+     * 1. retrieve the final nickname
+     * 2. generate announcement statements
      */
     public String[] solution(String[] record) {
 
-        // 1.
+        Map<String, String> nicknameMap = retrieveFinalNicknames(record);
+
+        List<String> statements = generateAnnouncementStatements(record, nicknameMap);
+
+        return statements.toArray(new String[statements.size()]);
+    }
+
+    private Map<String, String> retrieveFinalNicknames(String[] record) {
+
         Map<String, String> nicknameMap = new HashMap<>();
 
         for (String r : record) {
-            String[] rArr = r.split("\\s+");
-
-            if (rArr[0].equals("Enter")) {
-                nicknameMap.put(rArr[1], rArr[2]);
-            } else if (rArr[0].equals("Change")) {
-                nicknameMap.put(rArr[1], rArr[2]);
+            String[] rSplit = r.split("\\s");
+            if (rSplit[0].equals("Enter") || rSplit[0].equals("Change")) {
+                nicknameMap.put(rSplit[1], rSplit[2]);
             }
         }
 
-        // 2.
-        List<String> answer = new ArrayList<>();
+        return nicknameMap;
+    }
+
+    private List<String> generateAnnouncementStatements(String[] record, Map<String, String> nicknameMap) {
+        List<String> statements = new ArrayList<>();
 
         for (int i = 0; i < record.length; i++) {
-            String[] rArr = record[i].split("\\s+");
+            String[] rSplit = record[i].split("\\s");
 
-            if (rArr[0].equals("Enter")) {
-                answer.add(String.format("%s님이 들어왔습니다.", nicknameMap.get(rArr[1])));
-            } else if (rArr[0].equals("Leave")) {
-                answer.add(String.format("%s님이 나갔습니다.", nicknameMap.get(rArr[1])));
+            if (rSplit[0].equals("Enter")) {
+                statements.add(String.format("%s님이 들어왔습니다.", nicknameMap.get(rSplit[1])));
+            } else if (rSplit[0].equals("Leave")) {
+                statements.add(String.format("%s님이 나갔습니다.", nicknameMap.get(rSplit[1])));
             }
         }
-        return answer.toArray(new String[1]);
+
+        return statements;
     }
 }
