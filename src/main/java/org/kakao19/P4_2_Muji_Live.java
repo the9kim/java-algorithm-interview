@@ -20,7 +20,9 @@ public class P4_2_Muji_Live {
     }
 
     /**
-     * 1. Convert the input Array to a List and Sort it in acsending order of values
+     * A problem designed to assess skills in type casting.
+
+       1. Convert the input Array to a List and Sort it in acsending order of values
        2. Calculate the difference between the current index and the previous index in the list, multiply that difference by the length from the current index to the end of the list, and then subtract the resulting value from k.
        3. Order the input list in ascending order by index and Find the answer
      */
