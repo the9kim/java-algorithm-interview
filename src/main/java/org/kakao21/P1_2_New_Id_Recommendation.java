@@ -27,7 +27,7 @@ public class P1_2_New_Id_Recommendation extends P1_1_New_Id_Recommendation {
         if (sb.charAt(0) == '.') {
             sb.deleteCharAt(0);
         }
-        if (sb.charAt(sb.length() -1) == '.') {
+        if (sb.length() > 0 && sb.charAt(sb.length() -1) == '.') {
             sb.deleteCharAt(sb.length() - 1);
         }
 
@@ -45,7 +45,7 @@ public class P1_2_New_Id_Recommendation extends P1_1_New_Id_Recommendation {
         }
 
         // 7.
-        while (sb.length() <= 2) {
+        while (sb.length() > 0 && sb.length() <= 2) {
             sb.append(sb.charAt(sb.length() - 1));
         }
 
