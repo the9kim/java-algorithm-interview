@@ -36,11 +36,15 @@ public class MyQueue {
 
     public int poll() {
         if (isEmpty()) {
-            throw new IllegalStateException("Queue is empty");
+            throw new IllegalStateException("Queue is Empty");
         }
-        int item = first.item;
 
-        first = first.next;
+        if (first.equals(last)) {
+            this.last = null;
+        }
+
+        int item = first.item;
+        this.first = first.next;
 
         return item;
     }
