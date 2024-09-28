@@ -1,12 +1,10 @@
 package org.kakao21;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.StringJoiner;
 
 public class P3_3_Rank_Search {
     /**
@@ -15,78 +13,95 @@ public class P3_3_Rank_Search {
      * 3. Search the number of people that scores higher than the condition with queries using Binary search
      */
 
+    static final int SIZE = 4 * 3 * 3 * 3;
     List<List<Integer>> scores = new ArrayList<>();
-    Map<String, Integer> wordMap = new HashMap<>();
+    Map<String, Integer> indexMap = new HashMap<>();
 
     public int[] solution(String[] info, String[] query) {
-        // 1.
-        wordMap.put("-", 0);
-        wordMap.put("cpp", 1);
-        wordMap.put("java", 2);
-        wordMap.put("python", 3);
-        wordMap.put("backend", 1);
-        wordMap.put("frontend", 2);
-        wordMap.put("junior", 1);
-        wordMap.put("senior", 2);
-        wordMap.put("chicken", 1);
-        wordMap.put("pizza", 2);
+        setDataStructure();
 
-        for (int i = 0; i < 4 * 3 * 3 * 3; i++) {
+        updateInfo(info);
+
+        sortScores(scores);
+
+        List<Integer> results = searchRank(query);
+
+        return results.stream().mapToInt(Integer::intValue).toArray();
+    }
+
+    private void setDataStructure() {
+        for (int i = 0; i < SIZE; i++) {
             scores.add(new ArrayList<>());
         }
+        indexMap.put("-", 0);
+        indexMap.put("cpp", 1);
+        indexMap.put("java", 2);
+        indexMap.put("python", 3);
+        indexMap.put("backend", 1);
+        indexMap.put("frontend", 2);
+        indexMap.put("junior", 1);
+        indexMap.put("senior", 2);
+        indexMap.put("chicken", 1);
+        indexMap.put("pizza", 2);
+    }
 
-        // 2.
-        for (String s : info) {
-            String[] words = s.split(" ");
-            int[] wordArr = {
-                    wordMap.get(words[0]) * 3 * 3 * 3,
-                    wordMap.get(words[1]) * 3 * 3,
-                    wordMap.get(words[2]) * 3,
-                    wordMap.get(words[3])};
+    private void updateInfo(String[] info) {
+        for (String data : info) {
+            String[] splitInfo = data.split(" ");
+            int[] indices = new int[]{
+                    indexMap.get(splitInfo[0]) * 3 * 3 * 3,
+                    indexMap.get(splitInfo[1]) * 3 * 3,
+                    indexMap.get(splitInfo[2]) * 3,
+                    indexMap.get(splitInfo[3])
+            };
+            int score = Integer.parseInt(splitInfo[4]);
 
-            int score = Integer.parseInt(words[4]);
-
-            for (int i = 0; i < (1 << 4); ++i) {
+            for (int i = 0; i < 1 << 4; i++) {
                 int index = 0;
-                for (int j = 0; j < 4; ++j) {
+                for (int j = 0; j < 4; j++) {
                     if ((i & (1 << j)) != 0) {
-                        index += wordArr[j];
+                        index += indices[j];
                     }
                 }
                 scores.get(index).add(score);
             }
         }
+    }
 
-        // 3.
-        for (int i = 0; i < 4 * 3 * 3 * 3; i++) {
-            Collections.sort(scores.get(i));
+    private void sortScores(List<List<Integer>> scores) {
+        for (List<Integer> score : scores) {
+            Collections.sort(score);
         }
+    }
 
-        int[] answer = new int[query.length];
-        for (int i = 0; i < query.length; i++) {
-            String q = query[i];
-            String[] qArr = q.split(" ");
-            int index = wordMap.get(qArr[0]) * 3 * 3 * 3 +
-                    wordMap.get(qArr[2]) * 3 * 3 +
-                    wordMap.get(qArr[4]) * 3 +
-                    wordMap.get(qArr[6]);
-            int score = Integer.parseInt(qArr[7]);
+    private List<Integer> searchRank(String[] query) {
+        List<Integer> results = new ArrayList<>();
 
-            int ret = Collections.binarySearch(scores.get(index), score);
+        for (String q : query) {
+            String[] qSplit = q.split(" ");
+            int index = indexMap.get(qSplit[0]) * 3 * 3 * 3
+                    + indexMap.get(qSplit[2]) * 3 * 3
+                    + indexMap.get(qSplit[4]) * 3
+                    + indexMap.get(qSplit[6]);
+            int targetScore = Integer.parseInt(qSplit[7]);
 
-            if (ret < 0) {
-                ret = -(ret + 1);
+            int position = Collections.binarySearch(scores.get(index), targetScore);
+
+            if (position < 0) {
+                position = -(position + 1);
             } else {
-                for (int j = ret - 1; j >= 0; j--) {
-                    if (scores.get(index).get(j) == score) {
-                        ret = j;
+                for (int i = position - 1; i >= 0; i--) {
+                    if (scores.get(index).get(i) == targetScore) {
+                        position = i;
                     } else {
                         break;
                     }
                 }
             }
-            answer[i] = scores.get(index).size() - ret;
+
+            results.add(scores.get(index).size() - position);
         }
-        return answer;
+
+        return results;
     }
 }
