@@ -34,7 +34,7 @@ public class P2_2_Number_of_Prime_Numbers {
     }
 
     public boolean isPrimeNumber(long num) {
-        if (num <= 1 || (num >= 2 && num % 2 == 0)) {
+        if (num <= 1 || (num > 2 && num % 2 == 0)) {
             return false;
         }
         for (int i = 3; i <= (int) Math.sqrt(num); i += 2) {
