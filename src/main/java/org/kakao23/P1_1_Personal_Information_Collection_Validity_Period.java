@@ -16,44 +16,46 @@ public class P1_1_Personal_Information_Collection_Validity_Period {
      * 2. Compare today and the validity period Array
      */
     public int[] solution(String today, String[] terms, String[] privacies) {
-        // 1.
-        Map<String, Integer> termsMap = new HashMap<>();
-        for (String term : terms) {
-            String[] split = term.split(" ");
-            termsMap.put(split[0], Integer.parseInt(split[1]));
-        }
-        LocalDate[] validityPeriod = new LocalDate[privacies.length];
-        for (int i = 0; i < validityPeriod.length; i++) {
-            String[] privacy = privacies[i].split(" ");
-            int term = termsMap.get(privacy[1]);
-            validityPeriod[i] = calValidityPeriod(privacy[0], term);
-        }
 
-        // 2.
-        List<Integer> answer = new ArrayList<>();
-        int[] todaySplit = Arrays.stream(today.split("\\."))
-                .mapToInt(Integer::valueOf)
-                .toArray();
-        LocalDate todayDate = LocalDate.of(
-                todaySplit[0], todaySplit[1], todaySplit[2]);
+        LocalDate tday = convertToDateTime(today);
 
-        for (int i = 0; i < validityPeriod.length; i++) {
-            if (todayDate.isAfter(validityPeriod[i])) {
-                answer.add(i + 1);
-            }
-        }
-        return answer.stream()
-                .mapToInt(Integer::intValue)
-                .toArray();
+        Map<String, Integer> termsMap = createTermsMap(terms);
+
+        return findExpiredInfo(termsMap, privacies, tday);
     }
 
-    public LocalDate calValidityPeriod(String privacy, Integer term) {
-        String[] split = privacy.split("\\.");
-        int year = Integer.parseInt(split[0]);
-        int month = Integer.parseInt(split[1]);
-        int day = Integer.parseInt(split[2]);
+    private LocalDate convertToDateTime(String date) {
+        int[] tArr = Arrays.stream(date.split("\\."))
+                .mapToInt(Integer::parseInt)
+                .toArray();
 
-        LocalDate date = LocalDate.of(year, month, day);
-        return date.plusMonths(term).minusDays(1);
+        return LocalDate.of(tArr[0], tArr[1], tArr[2]);
+    }
+
+    private Map<String, Integer> createTermsMap(String[] terms) {
+
+        Map<String, Integer> termsMap = new HashMap<>();
+
+        for (String term : terms) {
+            termsMap.put(term.substring(0, 1), Integer.parseInt(term.substring(2)));
+        }
+
+        return termsMap;
+    }
+
+    private int[] findExpiredInfo(Map<String, Integer> termsMap, String[] privacies, LocalDate today) {
+        List<Integer> expiredInfo = new ArrayList<>();
+
+        for (int i = 0; i < privacies.length; i++) {
+            LocalDate date = convertToDateTime(privacies[i].substring(0, 10));
+            int period = termsMap.get(privacies[i].substring(11));
+            LocalDate expireDate = date.plusMonths(period).minusDays(1);
+
+            if (today.isAfter(expireDate)) {
+                expiredInfo.add(i + 1);
+            }
+        }
+
+        return expiredInfo.stream().mapToInt(Integer::intValue).toArray();
     }
 }
