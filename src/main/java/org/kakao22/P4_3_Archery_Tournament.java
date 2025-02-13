@@ -1,8 +1,11 @@
 package org.kakao22;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+
+
+/**
+ * There is one test case that causes runtime exception
+ */
 
 public class P4_3_Archery_Tournament {
 
@@ -48,7 +51,7 @@ public class P4_3_Archery_Tournament {
                 continue;
             } else if (lion[i] > apeach[i]) {
                 diff += (10 - i);
-            } else if(lion[i] <= apeach[i]) {
+            } else if (lion[i] <= apeach[i]) {
                 diff -= (10 - i);
             }
         }
@@ -70,7 +73,6 @@ public class P4_3_Archery_Tournament {
         }
         return false;
     }
-
 
 
 }
