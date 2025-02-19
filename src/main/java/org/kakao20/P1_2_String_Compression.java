@@ -3,9 +3,9 @@ package org.kakao20;
 public class P1_2_String_Compression {
 
     public int solution(String s) {
-        int optimalCompressionSize = Integer.MAX_VALUE;
+        int optimalCompressionSize = s.length();
 
-        for (int windowSize = 1; windowSize <= s.length() / 2 + 1; windowSize++) {
+        for (int windowSize = 1; windowSize <= s.length() / 2; windowSize++) {
 
             StringBuilder compressed = new StringBuilder();
 
